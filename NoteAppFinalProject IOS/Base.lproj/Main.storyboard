@@ -15,18 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noteslogo" translatesAutoresizingMaskIntoConstraints="NO" id="Eay-qZ-Zm1">
-                                <rect key="frame" x="87" y="322" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlv-Tq-Gwg">
-                                <rect key="frame" x="87" y="236" width="261" height="72"/>
+                                <rect key="frame" x="77" y="128" width="261" height="72"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.87201154092458433" green="1" blue="0.47487421486856862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="my note3" translatesAutoresizingMaskIntoConstraints="NO" id="Eay-qZ-Zm1">
+                                <rect key="frame" x="54" y="230" width="307" height="273"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -34,7 +34,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1010" y="118"/>
+            <point key="canvasLocation" x="-1010.144927536232" y="117.85714285714285"/>
         </scene>
         <!--Categories-->
         <scene sceneID="EzB-Kk-VNB">
@@ -153,6 +153,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="noteslogo" width="225" height="225"/>
+        <image name="my note3" width="281" height="180"/>
     </resources>
 </document>
