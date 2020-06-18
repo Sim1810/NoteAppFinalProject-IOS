@@ -14,7 +14,21 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="noteslogo" translatesAutoresizingMaskIntoConstraints="NO" id="Eay-qZ-Zm1">
+                                <rect key="frame" x="87" y="322" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlv-Tq-Gwg">
+                                <rect key="frame" x="87" y="236" width="261" height="72"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.87201154092458433" green="1" blue="0.47487421486856862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.83218763693530717" green="0.44649315742307766" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -39,7 +53,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="5V5-7H-W7j" kind="show" id="04Q-z6-Qxj"/>
+                                    <segue destination="5V5-7H-W7j" kind="show" identifier="showNotesSegue" id="04Q-z6-Qxj"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -109,7 +123,7 @@
                             <barButtonItem systemItem="add" id="0lN-al-10p"/>
                             <barButtonItem title="Sort" style="plain" id="4IV-cF-gYf">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KaN-Pi-YdH">
-                                    <rect key="frame" x="-23" y="-15" width="92" height="30"/>
+                                    <rect key="frame" x="261.5" y="7" width="92" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Button"/>
                                 </button>
@@ -138,4 +152,7 @@
             <point key="canvasLocation" x="-216" y="118"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="noteslogo" width="225" height="225"/>
+    </resources>
 </document>
