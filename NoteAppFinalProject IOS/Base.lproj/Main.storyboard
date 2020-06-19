@@ -52,7 +52,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="wEB-aS-TAM">
                                 <connections>
-                                    <action selector="AddNotesBtn:" destination="zsz-nQ-7w7" id="ZHb-to-h8A"/>
+                                    <action selector="AddNotesBtn:" destination="zsz-nQ-7w7" id="0wq-mG-ncs"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Sort" style="plain" id="Yj7-TQ-gcn">
