@@ -40,10 +40,7 @@ class CategoryTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    
-  /*  @IBAction func SortCategoryBtn(_ sender: UIBarButtonItem) {
-    
-    
+    @IBAction func SoetNotesbtn(_ sender: UIBarButtonItem) {
         
         let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
         
@@ -69,42 +66,17 @@ class CategoryTableViewController: UITableViewController {
         // 4. show the alertbox
         self.present(alertBox, animated: true, completion: nil)
         
-        }*/
+        
+    }
     
     
     
     
-   /* @IBAction func AddNotesBtn(_ sender: UIBarButtonItem) {
     
     
     
     
-        let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
-        
-        
-        // 2. Add Save and Cancel buttons
-        alertBox.addAction(UIAlertAction(title: "Date Created", style: .default, handler: { alert -> Void in
-            self.getAllNotebooks()
-            self.tableView.reloadData()
-        }))
-        alertBox.addAction(UIAlertAction(title: "Title(Asc)", style: .default, handler: { alert -> Void in
-            self.getAllNotebooksByTitle()
-            self.tableView.reloadData()
-        }))
-        alertBox.addAction(UIAlertAction(title: "Title(Desc)", style: .default, handler: { alert -> Void in
-            self.getAllNotebooksByTitleDesc()
-            self.tableView.reloadData()
-        }))
-        
-        alertBox.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        
-        
-        
-        // 4. show the alertbox
-        self.present(alertBox, animated: true, completion: nil)
-        
-        
-}*/
+  
     
     // MARK: database helper functions
       func getAllNotebooks() {
@@ -164,7 +136,7 @@ class CategoryTableViewController: UITableViewController {
           }
       }
      
-    /*func addNotebook(notebookName:String) -> Bool {
+    func addNotebook(notebookName:String) -> Bool {
           let notebook = Notebook(context: self.context)
           notebook.name = notebookName
           notebook.setValue(Date(), forKey:"dateCreated")
@@ -183,7 +155,7 @@ class CategoryTableViewController: UITableViewController {
           
           return false
           
-      }*/
+      }
       
     
     

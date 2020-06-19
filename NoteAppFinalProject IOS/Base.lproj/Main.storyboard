@@ -20,7 +20,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1010.144927536232" y="117.85714285714285"/>
+            <point key="canvasLocation" x="2242" y="737"/>
         </scene>
         <!--Categories-->
         <scene sceneID="EzB-Kk-VNB">
@@ -50,9 +50,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="VP6-Tx-wQP">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="Q8z-jU-HF0">
+                            <barButtonItem systemItem="add" id="wEB-aS-TAM">
                                 <connections>
-                                    <action selector="AddNotesBtn:" destination="zsz-nQ-7w7" id="q7y-t5-eb4"/>
+                                    <action selector="AddNotesBtn:" destination="zsz-nQ-7w7" id="ZHb-to-h8A"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Sort" style="plain" id="Yj7-TQ-gcn">
@@ -66,7 +66,7 @@
                                     </connections>
                                 </button>
                                 <connections>
-                                    <action selector="SortCategoryBtn:" destination="zsz-nQ-7w7" id="ARv-Xt-vJt"/>
+                                    <action selector="SoetNotesbtn:" destination="zsz-nQ-7w7" id="eaf-yX-gkg"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
