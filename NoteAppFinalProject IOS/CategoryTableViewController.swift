@@ -124,7 +124,8 @@ class CategoryTableViewController: UITableViewController {
               print("Error fetching notebooks from database")
           }
       }
-      /*func getAllNotebooksByTitle() {
+    
+      func getAllNotebooksByTitle() {
           //fetchRequest.predicate = NSPredicate(format: "notebook.name = %@", notebook.name)
           // setup array of notebooks
           let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
@@ -143,6 +144,7 @@ class CategoryTableViewController: UITableViewController {
               print("Error fetching notebooks from database")
           }
       }
+    
       func getAllNotebooksByTitleDesc() {
           // setup array of notebooks
           let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
@@ -161,7 +163,8 @@ class CategoryTableViewController: UITableViewController {
               print("Error fetching notebooks from database")
           }
       }
-      func addNotebook(notebookName:String) -> Bool {
+     
+    /*func addNotebook(notebookName:String) -> Bool {
           let notebook = Notebook(context: self.context)
           notebook.name = notebookName
           notebook.setValue(Date(), forKey:"dateCreated")
