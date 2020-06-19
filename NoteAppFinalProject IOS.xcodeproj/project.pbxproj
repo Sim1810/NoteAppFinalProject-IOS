@@ -13,6 +13,10 @@
 		CE394DDD249AE21C000015A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE394DDB249AE21C000015A5 /* Main.storyboard */; };
 		CE394DDF249AE222000015A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE394DDE249AE222000015A5 /* Assets.xcassets */; };
 		CE394DE2249AE222000015A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE394DE0249AE222000015A5 /* LaunchScreen.storyboard */; };
+		CEAFF5A9249C1889000544F3 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFF5A8249C1889000544F3 /* CategoryTableViewController.swift */; };
+		CEAFF5AB249C234C000544F3 /* NotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFF5AA249C234C000544F3 /* NotesTableViewController.swift */; };
+		CEAFF5B4249C291F000544F3 /* Project_IOS_datamodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CEAFF5B2249C291F000544F3 /* Project_IOS_datamodel.xcdatamodeld */; };
+		CEAFF5B9249C382C000544F3 /* EditNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAFF5B8249C382C000544F3 /* EditNotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		CE394DDE249AE222000015A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE394DE1249AE222000015A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE394DE3249AE222000015A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEAFF5A8249C1889000544F3 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		CEAFF5AA249C234C000544F3 /* NotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewController.swift; sourceTree = "<group>"; };
+		CEAFF5B3249C291F000544F3 /* Project_IOS_datamodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Project_IOS_datamodel.xcdatamodel; sourceTree = "<group>"; };
+		CEAFF5B8249C382C000544F3 /* EditNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +67,13 @@
 				CE394DD5249AE21C000015A5 /* AppDelegate.swift */,
 				CE394DD7249AE21C000015A5 /* SceneDelegate.swift */,
 				CE394DD9249AE21C000015A5 /* ViewController.swift */,
+				CEAFF5A8249C1889000544F3 /* CategoryTableViewController.swift */,
+				CEAFF5AA249C234C000544F3 /* NotesTableViewController.swift */,
+				CEAFF5B8249C382C000544F3 /* EditNotesViewController.swift */,
 				CE394DDB249AE21C000015A5 /* Main.storyboard */,
 				CE394DDE249AE222000015A5 /* Assets.xcassets */,
 				CE394DE0249AE222000015A5 /* LaunchScreen.storyboard */,
+				CEAFF5B2249C291F000544F3 /* Project_IOS_datamodel.xcdatamodeld */,
 				CE394DE3249AE222000015A5 /* Info.plist */,
 			);
 			path = "NoteAppFinalProject IOS";
@@ -141,6 +153,10 @@
 				CE394DDA249AE21C000015A5 /* ViewController.swift in Sources */,
 				CE394DD6249AE21C000015A5 /* AppDelegate.swift in Sources */,
 				CE394DD8249AE21C000015A5 /* SceneDelegate.swift in Sources */,
+				CEAFF5A9249C1889000544F3 /* CategoryTableViewController.swift in Sources */,
+				CEAFF5B9249C382C000544F3 /* EditNotesViewController.swift in Sources */,
+				CEAFF5AB249C234C000544F3 /* NotesTableViewController.swift in Sources */,
+				CEAFF5B4249C291F000544F3 /* Project_IOS_datamodel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +352,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CEAFF5B2249C291F000544F3 /* Project_IOS_datamodel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CEAFF5B3249C291F000544F3 /* Project_IOS_datamodel.xcdatamodel */,
+			);
+			currentVersion = CEAFF5B3249C291F000544F3 /* Project_IOS_datamodel.xcdatamodel */;
+			path = Project_IOS_datamodel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CE394DCA249AE21C000015A5 /* Project object */;
 }

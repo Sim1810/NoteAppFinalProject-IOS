@@ -14,20 +14,6 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My Notes" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlv-Tq-Gwg">
-                                <rect key="frame" x="77" y="128" width="261" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="my note3" translatesAutoresizingMaskIntoConstraints="NO" id="Eay-qZ-Zm1">
-                                <rect key="frame" x="54" y="230" width="307" height="273"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -45,7 +31,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="aAG-y9-G9D">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="aAG-y9-G9D">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aAG-y9-G9D" id="oVj-br-NIx">
@@ -64,18 +50,30 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="VP6-Tx-wQP">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="Q8z-jU-HF0"/>
-                            <barButtonItem title="Sort" id="FH1-ix-RDH">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qnx-eH-DEH">
-                                    <rect key="frame" x="261.5" y="7" width="92" height="30"/>
+                            <barButtonItem systemItem="add" id="Q8z-jU-HF0">
+                                <connections>
+                                    <action selector="AddNotesBtn:" destination="zsz-nQ-7w7" id="q7y-t5-eb4"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Sort" style="plain" id="Yj7-TQ-gcn">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ziq-MM-KeP">
+                                    <rect key="frame" x="261.5" y="3" width="92" height="38"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                    <state key="normal" title="Sort"/>
+                                    <connections>
+                                        <action selector="SortCategoryBtn:" destination="zsz-nQ-7w7" eventType="touchUpInside" id="CQV-Xe-0IK"/>
+                                    </connections>
                                 </button>
+                                <connections>
+                                    <action selector="SortCategoryBtn:" destination="zsz-nQ-7w7" id="ARv-Xt-vJt"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sB-yf-iGU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="zsz-nQ-7w7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="680" y="118"/>
         </scene>
@@ -122,7 +120,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="0lN-al-10p"/>
                             <barButtonItem title="Sort" style="plain" id="4IV-cF-gYf">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KaN-Pi-YdH">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KaN-Pi-YdH" userLabel="Sort">
                                     <rect key="frame" x="261.5" y="7" width="92" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <state key="normal" title="Button"/>
@@ -152,7 +150,4 @@
             <point key="canvasLocation" x="-216" y="118"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="my note3" width="281" height="180"/>
-    </resources>
 </document>
