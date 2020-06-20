@@ -25,7 +25,7 @@
         <!--Categories-->
         <scene sceneID="EzB-Kk-VNB">
             <objects>
-                <tableViewController id="GNI-GG-FfX" sceneMemberID="viewController">
+                <tableViewController id="GNI-GG-FfX" customClass="CategoryTableViewController" customModule="NoteAppFinalProject_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="LXo-3m-uNE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,7 +52,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="wEB-aS-TAM">
                                 <connections>
-                                    <action selector="AddNotesBtn:" destination="zsz-nQ-7w7" id="0wq-mG-ncs"/>
+                                    <action selector="AddNotesBtn:" destination="GNI-GG-FfX" id="TNj-6V-ObR"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Sort" style="plain" id="Yj7-TQ-gcn">
@@ -66,7 +66,7 @@
                                     </connections>
                                 </button>
                                 <connections>
-                                    <action selector="SoetNotesbtn:" destination="zsz-nQ-7w7" id="eaf-yX-gkg"/>
+                                    <action selector="SortNoteBtn:" destination="GNI-GG-FfX" id="RJk-TZ-xOJ"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -80,7 +80,7 @@
         <!--Notes-->
         <scene sceneID="YBt-5L-tV8">
             <objects>
-                <tableViewController id="5V5-7H-W7j" sceneMemberID="viewController">
+                <tableViewController id="5V5-7H-W7j" customClass="NotesTableViewController" customModule="NoteAppFinalProject_IOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NmE-fA-Vv1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

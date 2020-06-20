@@ -40,8 +40,10 @@ class CategoryTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     
-    @IBAction func SoetNotesbtn(_ sender: UIBarButtonItem) {
-        
+    
+    @IBAction func SortNoteBtn(_ sender: UIBarButtonItem) {
+    
+    
         let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
         
         
@@ -70,31 +72,39 @@ class CategoryTableViewController: UITableViewController {
     }
     
     
+    
     @IBAction func AddNotesBtn(_ sender: UIBarButtonItem) {
+    // 1. Create a popup
+    let alertBox = UIAlertController(title: "Add a Category", message: "Enter the name of new category", preferredStyle: .alert)
+    
+    
+    // 2. Add Save and Cancel buttons
+    alertBox.addAction(UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
+        let textField = alertBox.textFields![0] as UITextField
         
-    let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
-            
-            
-            // 2. Add Save and Cancel buttons
-            alertBox.addAction(UIAlertAction(title: "Date Created", style: .default, handler: { alert -> Void in
+        
+        if (textField.text?.isEmpty == false) {
+            let notebookSaved = self.addNotebook(notebookName: textField.text!)
+            if (notebookSaved == true) {
+                // reload the table
                 self.getAllNotebooks()
                 self.tableView.reloadData()
-            }))
-            alertBox.addAction(UIAlertAction(title: "Title(Asc)", style: .default, handler: { alert -> Void in
-                self.getAllNotebooksByTitle()
-                self.tableView.reloadData()
-            }))
-            alertBox.addAction(UIAlertAction(title: "Title(Desc)", style: .default, handler: { alert -> Void in
-                self.getAllNotebooksByTitleDesc()
-                self.tableView.reloadData()
-            }))
-            
-            alertBox.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-            
-            
-            
-            // 4. show the alertbox
-            self.present(alertBox, animated: true, completion: nil)
+            }
+        }
+    }))
+    alertBox.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    
+    // 3. Add a textbox
+    alertBox.addTextField(configurationHandler: {(textField : UITextField!) -> Void in
+        textField.placeholder = "Enter category name"
+    })
+    
+    
+    // 4. show the alertbox
+    self.present(alertBox, animated: true, completion: nil)
+    
+    
+    
         }
         
     
@@ -106,21 +116,24 @@ class CategoryTableViewController: UITableViewController {
     
     // MARK: database helper functions
       func getAllNotebooks() {
-          // setup array of notebooks
-          let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
-          
-          // Uncomment if you want to sort the list by name
-          // let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
-          // notebookFetchRequest.sortDescriptors = [sortDescriptor]
-          
-          
-          do {
-              
-              self.notebooks = try context.fetch(fetchRequest)
-          }
-          catch {
-              print("Error fetching notebooks from database")
-          }
+        
+        // setup array of notebooks
+               let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
+               
+               // Uncomment if you want to sort the list by name
+               // let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+               // notebookFetchRequest.sortDescriptors = [sortDescriptor]
+               
+               
+               do {
+                   
+                   self.notebooks = try context.fetch(fetchRequest)
+               }
+               catch {
+                   print("Error fetching notebooks from database")
+        }
+        
+ 
       }
     
       func getAllNotebooksByTitle() {
@@ -218,7 +231,7 @@ class CategoryTableViewController: UITableViewController {
 
     
     // Override to support editing the table view.
-   /* override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             let i = indexPath.row
@@ -245,7 +258,7 @@ class CategoryTableViewController: UITableViewController {
         else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
-    }*/
+    }
     
 
     /*
