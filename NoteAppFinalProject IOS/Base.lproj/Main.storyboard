@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -94,7 +95,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="fem-TP-xI8" kind="show" identifier="editNoteSegue" id="ZEb-JM-9b0"/>
+                                    <segue destination="qS9-ij-4Pz" kind="show" identifier="editNotesSegue" id="xe4-OL-iNp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -107,7 +108,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="0lN-al-10p">
                                 <connections>
-                                    <segue destination="fem-TP-xI8" kind="show" identifier="addNoteSegue" id="5RQ-Yh-gKQ"/>
+                                    <segue destination="qS9-ij-4Pz" kind="show" identifier="addNotesSegue" id="Cfc-WB-4C5"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Sort" style="plain" id="4IV-cF-gYf">
@@ -127,42 +128,82 @@
             </objects>
             <point key="canvasLocation" x="1539" y="118"/>
         </scene>
-        <!--Edit Notes-->
-        <scene sceneID="8B9-aN-qRN">
+        <!--Title-->
+        <scene sceneID="pq9-dI-axI">
             <objects>
-                <tableViewController id="fem-TP-xI8" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ius-m0-fRw">
+                <viewController id="qS9-ij-4Pz" customClass="EditNotesViewController" customModule="NoteAppFinalProject_IOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WFH-6p-cKl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JcB-ut-qhm">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Edit Notes" id="fsZ-m2-Mkk">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="z1g-jq-GIt"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paper-notes-background" translatesAutoresizingMaskIntoConstraints="NO" id="oFw-O8-wvd">
+                                <rect key="frame" x="0.0" y="130" width="414" height="294"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kzm-16-CDu">
+                                <rect key="frame" x="50" y="446" width="74" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Capture Image" image="captureImage"/>
+                                <connections>
+                                    <action selector="captureImgAction:" destination="qS9-ij-4Pz" eventType="touchUpInside" id="Bux-33-abE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MZ8-Oj-ue6">
+                                <rect key="frame" x="151" y="448" width="73" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="record"/>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="showImage" translatesAutoresizingMaskIntoConstraints="NO" id="vVX-Of-wxh">
+                                <rect key="frame" x="32" y="556" width="362" height="272"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fB0-vg-zMB">
+                                <rect key="frame" x="273" y="448" width="87" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="location"/>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="T5X-mG-oeJ">
+                                <rect key="frame" x="50" y="130" width="344" height="294"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aaM-YV-vGl">
+                                <rect key="frame" x="172" y="86" width="79" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
+                                <color key="textColor" red="0.16480744723006391" green="0.42227979274611394" blue="0.16370800558024584" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <connections>
-                            <outlet property="dataSource" destination="fem-TP-xI8" id="J0R-Vp-huR"/>
-                            <outlet property="delegate" destination="fem-TP-xI8" id="zad-0K-guw"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Edit Notes" id="oiY-yL-M8P">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="aly-rR-R1s"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QXC-r3-7pX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2798.5507246376815" y="102.45535714285714"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="jg7-8z-ubg">
-            <objects>
-                <navigationController id="YKP-gj-apQ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q6L-Px-K8y">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                        <viewLayoutGuide key="safeArea" id="iMr-cS-I3O"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="H9n-wa-0he" userLabel="Notes"/>
                     <connections>
-                        <segue destination="fem-TP-xI8" kind="relationship" relationship="rootViewController" id="yLz-bD-aPW"/>
+                        <outlet property="captureimg" destination="kzm-16-CDu" id="lz3-F3-naT"/>
+                        <outlet property="mapbtn" destination="fB0-vg-zMB" id="i9g-Bq-ozI"/>
+                        <outlet property="recordVideo" destination="MZ8-Oj-ue6" id="TJ2-V6-0P1"/>
+                        <outlet property="showImg" destination="vVX-Of-wxh" id="cg7-Sg-meu"/>
+                        <outlet property="titleLbl" destination="aaM-YV-vGl" id="UIT-9P-uFg"/>
+                        <outlet property="txtView" destination="T5X-mG-oeJ" id="rst-du-RsD"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qF8-EX-rME" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pZe-aE-rJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2883" y="794"/>
+            <point key="canvasLocation" x="2353.6231884057975" y="117.85714285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="60J-cc-1ca">
@@ -182,6 +223,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ZEb-JM-9b0"/>
+        <segue reference="xe4-OL-iNp"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="captureImage" width="225" height="225"/>
+        <image name="location" width="225" height="225"/>
+        <image name="paper-notes-background" width="1600" height="1200"/>
+        <image name="record" width="225" height="225"/>
+        <image name="showImage" width="200" height="200"/>
+    </resources>
 </document>
