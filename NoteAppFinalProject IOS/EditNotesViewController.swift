@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import  CoreData
+import MapKit
+import AVFoundation
 
-class EditNotesViewController: UIViewController {
-    
+class EditNotesViewController: UIViewController,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate{
     var note:Note!
     var notebook : Notebook?
     
     
     
+     var locationManager:CLLocationManager!
     
 
     override func viewDidLoad() {
