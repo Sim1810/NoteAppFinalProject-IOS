@@ -40,15 +40,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
 
     @IBAction func NotesbtnSort(_ sender: UIBarButtonItem) {
           let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
-                       // 2. Add Save and Cancel buttons
-        //               alertBox.addAction(UIAlertAction(title: "Title(Asc)", style: .default, handler: { alert -> Void in
-        //                   self.getNotesByTitle()
-        //                   self.tableView.reloadData()
-        //               }))
-        //               alertBox.addAction(UIAlertAction(title: "Title(Desc)", style: .default, handler: { alert -> Void in
-        //                   self.getNotesByTitleDesc()
-        //                   self.tableView.reloadData()
-        //               }))
+       
                        alertBox.addAction(UIAlertAction(title: "Date(Recent first)", style: .default, handler: { alert -> Void in
                            self.getNotesByDateRecent()
                            self.tableView.reloadData()
@@ -73,8 +65,6 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
               })
               resultsController.tableView.reloadData()
           }
-        //  Database helper functions
-           
            
            func getNotesByTitle() {
                // 1. get notes from the database
@@ -252,26 +242,11 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
         
         
 
-        /*
-        // Override to support rearranging the table view.
-        override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-        }
-        */
-
-        /*
-        // Override to support conditional rearranging of the table view.
-        override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-            // Return false if you do not want the item to be re-orderable.
-            return true
-        }
-        */
-
+       
         
-        // MARK: - Navigation
-
+        
         // In a storyboard-based application, you will often want to do a little preparation before navigation
- /* override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             // Get the new view controller using segue.destination.
             // Pass the selected object to the new view controller.
             if (segue.identifier == "editNoteSegue") {
@@ -285,11 +260,11 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
                   else if (segue.identifier == "addNoteSegue") {
                       // person wants to add a new note
                       let editNoteVC = segue.destination as! EditNotesViewController
-                      editNoteVC.userIsEditing = false
+                    //  editNoteVC.userIsEditing = false
                       editNoteVC.notebook = self.notebook
                       
                   }
-        }*/
+        }
 
 
     }
