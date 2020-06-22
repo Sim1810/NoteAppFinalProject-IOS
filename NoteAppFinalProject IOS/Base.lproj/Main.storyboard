@@ -3,25 +3,9 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NoteAppFinalProject_IOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2242" y="737"/>
-        </scene>
         <!--Categories-->
         <scene sceneID="EzB-Kk-VNB">
             <objects>
@@ -109,6 +93,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="fem-TP-xI8" kind="show" identifier="editNoteSegue" id="ZEb-JM-9b0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -118,20 +105,77 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Notes" id="Vek-Xl-9Wy">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="add" id="0lN-al-10p"/>
+                            <barButtonItem systemItem="add" id="0lN-al-10p">
+                                <connections>
+                                    <segue destination="fem-TP-xI8" kind="show" identifier="addNoteSegue" id="5RQ-Yh-gKQ"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem title="Sort" style="plain" id="4IV-cF-gYf">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KaN-Pi-YdH" userLabel="Sort">
                                     <rect key="frame" x="261.5" y="7" width="92" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" title="Sort"/>
                                 </button>
+                                <connections>
+                                    <action selector="NotesbtnSort:" destination="5V5-7H-W7j" id="mGB-Lw-Vee"/>
+                                </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="btnSort" destination="4IV-cF-gYf" id="TOM-h5-IGC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVC-e4-UhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1539" y="118"/>
+        </scene>
+        <!--Edit Notes-->
+        <scene sceneID="8B9-aN-qRN">
+            <objects>
+                <tableViewController id="fem-TP-xI8" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ius-m0-fRw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="m0U-X5-tqm">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="m0U-X5-tqm" id="sfQ-KC-wZb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fem-TP-xI8" id="J0R-Vp-huR"/>
+                            <outlet property="delegate" destination="fem-TP-xI8" id="zad-0K-guw"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Edit Notes" id="oiY-yL-M8P">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="aly-rR-R1s"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QXC-r3-7pX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2801" y="103"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jg7-8z-ubg">
+            <objects>
+                <navigationController id="YKP-gj-apQ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q6L-Px-K8y">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fem-TP-xI8" kind="relationship" relationship="rootViewController" id="yLz-bD-aPW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qF8-EX-rME" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2883" y="794"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="60J-cc-1ca">
@@ -150,4 +194,7 @@
             <point key="canvasLocation" x="-216" y="118"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="yLz-bD-aPW"/>
+    </inferredMetricsTieBreakers>
 </document>
