@@ -39,13 +39,14 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
         super.viewDidLoad()
 
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        context = appDelegate.persistentContainer.viewContext
+         let appDelegate = UIApplication.shared.delegate as? AppDelegate
+           
+        context = appDelegate?.persistentContainer.viewContext
         if (userIsEditing == true) {
             print("Editing an existing note")
-            titleLbl.text = note.title!
-            txtView.text = note.text!
-            self.showImg.image = UIImage(data: note.image! as Data)
+          //  titleLbl.text = note.title!
+            //txtView.text = note.text!
+          //  self.showImg.image = UIImage(data: note.image! as Data)
            
             mapbtn.isHidden = false
         }
@@ -98,6 +99,8 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
            super.viewWillAppear(animated)
            //determineMyCurrentLocation()
        }
+    
+    
     
     
 
