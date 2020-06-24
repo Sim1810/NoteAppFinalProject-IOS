@@ -34,7 +34,7 @@
                             <outlet property="delegate" destination="GNI-GG-FfX" id="Ano-Mg-ZyT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="VP6-Tx-wQP">
+                    <navigationItem key="navigationItem" title="Categories" prompt="hh" id="VP6-Tx-wQP">
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="wEB-aS-TAM">
                                 <connections>
@@ -43,7 +43,7 @@
                             </barButtonItem>
                             <barButtonItem title="Sort" style="plain" id="Yj7-TQ-gcn">
                                 <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ziq-MM-KeP">
-                                    <rect key="frame" x="261.5" y="3" width="92" height="38"/>
+                                    <rect key="frame" x="261.5" y="37" width="92" height="38"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                                     <state key="normal" title="Sort"/>
@@ -151,16 +151,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRf-rm-Fet">
-                                <rect key="frame" x="20" y="375" width="143" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Take picture" image="camera" catalog="system">
-                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="selectimage:" destination="Nqh-aF-8NJ" eventType="touchUpInside" id="Sjc-Jv-cro"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hJP-I0-CLJ">
                                 <rect key="frame" x="71" y="198" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -178,6 +168,7 @@
                                 <rect key="frame" x="0.0" y="646" width="414" height="216"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="sectionIndexColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="Fr8-Qy-xcM">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -197,7 +188,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hs2-66-fPr">
                                 <rect key="frame" x="33" y="425" width="168" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Make a Voice Note" image="mic.fill" catalog="system"/>
+                                <state key="normal" title="Make a Voice Note" image="mic.fill" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
                                 <connections>
                                     <action selector="record:" destination="Nqh-aF-8NJ" eventType="touchUpInside" id="0Le-6q-4I1"/>
                                 </connections>
@@ -205,7 +198,19 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4d9-gr-dWs">
                                 <rect key="frame" x="15" y="446" width="168" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Your Loaction" image="location" catalog="system"/>
+                                <state key="normal" title="Your Loaction" image="location" catalog="system">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRf-rm-Fet">
+                                <rect key="frame" x="0.0" y="375" width="291" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Take Photo/Import Image" image="camera" catalog="system">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="selectimage:" destination="Nqh-aF-8NJ" eventType="touchUpInside" id="Sjc-Jv-cro"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
