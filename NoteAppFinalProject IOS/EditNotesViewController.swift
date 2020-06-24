@@ -137,57 +137,54 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     
     @IBAction func selectimage(_ sender: UIButton) {
         
-       let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.allowsEditing = true
-        
-        let alertController = UIAlertController(title: "Add an Image", message: "Choose From", preferredStyle: .actionSheet)
-        
-        let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
-            pickerController.sourceType = .camera
-            self.present(pickerController, animated: true, completion: nil)
-            }
-        
-        let photosLibraryAction = UIAlertAction(title: "Photos Library", style: .default) { (action) in
-            pickerController.sourceType = .photoLibrary
-            
-            self.present(pickerController, animated: true, completion: nil)
-            
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
-        alertController.addAction(cameraAction)
-        alertController.addAction(photosLibraryAction)
-        alertController.addAction(cancelAction)
-        
-        present(alertController, animated: true, completion: nil)
-        
-        }
-    
-    
-   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true)
+      let pickerController = UIImagePickerController()
+           pickerController.delegate = self
+           pickerController.allowsEditing = true
+           
+           let alertController = UIAlertController(title: "Add an Image", message: "Choose From", preferredStyle: .actionSheet)
+           
+           let cameraAction = UIAlertAction(title: "Camera", style: .default) { (action) in
+               pickerController.sourceType = .camera
+               self.present(pickerController, animated: true, completion: nil)
+               }
+           
+           let photosLibraryAction = UIAlertAction(title: "Photos Library", style: .default) { (action) in
+               pickerController.sourceType = .photoLibrary
+               
+               self.present(pickerController, animated: true, completion: nil)
+               
+           }
+           
+           let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
+           alertController.addAction(cameraAction)
+           alertController.addAction(photosLibraryAction)
+           alertController.addAction(cancelAction)
+           
+           present(alertController, animated: true, completion: nil)
+           
+           }
+       
+       
+       func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+                 let imageData = image.pngData() as NSData?
 
-        guard let image = info[.editedImage] as? UIImage else {
-            print("No image found")
-            return
-        }
-
-        // print out the image size as a test
-        print(image.size)
-    }
-    
-      func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-      picker.dismiss(animated: true, completion: nil)
-      }
-      
-      override func viewWillAppear(_ animated: Bool) {
-             super.viewWillAppear(animated)
-             //determineMyCurrentLocation()
+            self.notesImageView.image = UIImage(data: imageData! as Data)
+                    self.dismiss(animated: true, completion: nil)
+             }
          }
+         func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+         picker.dismiss(animated: true, completion: nil)
+         }
+         
+         override func viewWillAppear(_ animated: Bool) {
+                super.viewWillAppear(animated)
+                //determineMyCurrentLocation()
+            }
+         
       
          
-         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        /* func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
              let userLocation:CLLocation = locations[0] as CLLocation
             
              note.lat = userLocation.coordinate.latitude
@@ -199,7 +196,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
          func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
          {
              print("Error \(error)")
-         }
+         }*/
     
     
     
