@@ -13,53 +13,59 @@ import AVFoundation
 
 class EditNotesViewController: UIViewController,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate{
     
+    @IBOutlet weak var txttitle: UITextField!
+    
+    @IBOutlet weak var textView: UITextView!
+    
+    @IBOutlet weak var notesImageView: UIImageView!
     
     
-    @IBOutlet weak var titleLbl: UILabel!
-    @IBOutlet weak var txtView: UITextView!
-    
-    @IBOutlet weak var captureimg: UIButton!
-    
-    @IBOutlet weak var recordVideo: UIButton!
-    
-    @IBOutlet weak var mapbtn: UIButton!
-    
-    @IBOutlet weak var showImg: UIImageView!
-    
-    var note:Note!
-    var notebook : Notebook?
-    var locationManager:CLLocationManager!
-    var userIsEditing = true
-        var old = true
- var context:NSManagedObjectContext!
-    
+    var latitudeString:String = ""
+          var longitudeString:String = ""
+    // MARK: -- variables
+          var note:Note!
+          var notebook : Notebook?
+          var userIsEditing = true
+         var old = true
+    // MARK: -- database
+        var context:NSManagedObjectContext!
+        
+  
 
-
+    
+    
+    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        txtView.layer.borderWidth = 1
-        txtView.layer.borderColor = UIColor.black.cgColor
-        
-        
-         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-              context = appDelegate.persistentContainer.viewContext
-        if (userIsEditing == true) {
-            print("Editing an existing note")
-           // titleLbl.text = note.title!
-           // txtView.text = note.text!
-           // self.showImg.image = UIImage(data: note.image! as Data)
-           
-            mapbtn.isHidden = false
-        }
-        else {
-            print("Going to add a new note to: \(notebook!.name!)")
-            txtView.text = ""
-            mapbtn.isHidden = true
-        }
+    super.viewDidLoad()
+    
+    
+    // playlbl.isEnabled = old
+          guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+          context = appDelegate.persistentContainer.viewContext
+          
+          if (userIsEditing == true) {
+              print("Editing an existing note")
+              txttitle.text = note.title!
+              textView.text = note.text!
+    self.notesImageView.image = UIImage(data: note.image! as Data)
+             // lblLat.text = String(note.lat)
+             // lblLong.text = String(note.long)
+             // btnloc.isHidden = false
+          }
+          else {
+              print("Going to add a new note to: \(notebook!.name!)")
+              textView.text = ""
+           //   btnloc.isHidden = true
+          }
+         // determineMyCurrentLocation()
+          
+
+          // Do any additional setup after loading the view.
     }
     
-    @IBAction func captureImgAction(_ sender: UIButton) {
-        let pickerController = UIImagePickerController()
+    @IBAction func selectimage(_ sender: UIButton) {
+        
+       let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.allowsEditing = true
         
@@ -72,6 +78,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
         
         let photosLibraryAction = UIAlertAction(title: "Photos Library", style: .default) { (action) in
             pickerController.sourceType = .photoLibrary
+            
             self.present(pickerController, animated: true, completion: nil)
             
         }
@@ -82,51 +89,71 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
-    }
+        
+        }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-            let imageData = image.pngData() as NSData?
+          if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+              let imageData = image.pngData() as NSData?
 
-       self.showImg.image = UIImage(data: imageData! as Data)
-               self.dismiss(animated: true, completion: nil)
-        }
-    }
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-    picker.dismiss(animated: true, completion: nil)
-    }
+         self.notesImageView.image = UIImage(data: imageData! as Data)
+                 self.dismiss(animated: true, completion: nil)
+          }
+      }
+      func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+      picker.dismiss(animated: true, completion: nil)
+      }
+      
+      override func viewWillAppear(_ animated: Bool) {
+             super.viewWillAppear(animated)
+             //determineMyCurrentLocation()
+         }
+      
+         
+         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+             let userLocation:CLLocation = locations[0] as CLLocation
+            
+             note.lat = userLocation.coordinate.latitude
+             note.long = userLocation.coordinate.longitude
+             print("user latitude = \(userLocation.coordinate.latitude)")
+             print("user longitude = \(userLocation.coordinate.longitude)")
+         }
+         
+         func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+         {
+             print("Error \(error)")
+         }
     
-    override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           //determineMyCurrentLocation()
-       }
     
     
     
-    @IBAction func saveBtn(_ sender: UIBarButtonItem) {
-       // determineMyCurrentLocation()
-                     if (txtView.text!.isEmpty) {
+    @IBAction func savenotes(_ sender: UIBarButtonItem) {
+        
+        
+                    // determineMyCurrentLocation()
+                     if (textView.text!.isEmpty) {
                          print("Please enter some text")
                          return
                      }
                      
                      
                      if (userIsEditing == true) {
-                        // note.text = txtView.text!
+                         note.text = textView.text!
                      }
                      else {
                          
                          // create a new note in the notebook
                          self.note = Note(context:context)
                          note.setValue(Date(), forKey:"dateAdded")
-                         if (titleLbl.text!.isEmpty) {
+                         if (txttitle.text!.isEmpty) {
                              note.title = "No Title"
                          }
                          else{
-                           //  note.title = titleLbl.text!
+                             note.title = txttitle.text!
                          }
-                         note.text = txtView.text!
-                      let imageData = showImg.image!.pngData() as NSData?
+                         note.text = textView.text!
+                      let imageData = notesImageView.image!.pngData() as NSData?
                          note.image = imageData as Data?
                         
                          note.notebook = self.notebook
@@ -155,12 +182,14 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
                          self.navigationController?.popViewController(animated: true)
                          //self.dismiss(animated: true, completion: nil)
                      }
-                     
-                     
-          }
+        
+        
+        
+    }
     
     
 
+    
     /*
     // MARK: - Navigation
 

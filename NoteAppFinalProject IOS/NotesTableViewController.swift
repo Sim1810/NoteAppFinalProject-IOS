@@ -329,14 +329,14 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
                       let editNoteVC = segue.destination as! EditNotesViewController
                       
                       let i = (self.tableView.indexPathForSelectedRow?.row)!
-                      editNoteVC.note = notes[i]
+           editNoteVC.note = notes[i]
                       
                   }
                   else if (segue.identifier == "addNoteSegue") {
                       // person wants to add a new note
                       let editNoteVC = segue.destination as! EditNotesViewController
-                    //  editNoteVC.userIsEditing = false
-                      editNoteVC.notebook = self.notebook
+                     editNoteVC.userIsEditing = false
+        editNoteVC.notebook = self.notebook
                       
                   }
         }
