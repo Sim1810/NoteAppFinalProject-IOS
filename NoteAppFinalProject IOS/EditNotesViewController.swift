@@ -86,7 +86,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
         
         AVAudioSession.sharedInstance().requestRecordPermission{(hasPermission) in
             if hasPermission{
-                print("Accepted")
+                print("You have permission to take picture!")
             }
         }
         navigationController?.navigationBar.barTintColor = UIColor.green
