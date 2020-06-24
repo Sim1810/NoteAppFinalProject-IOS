@@ -19,6 +19,39 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     
     @IBOutlet weak var notesImageView: UIImageView!
     
+    @IBOutlet weak var recordBtn: UIButton!
+    var recordingSession:AVAudioSession!
+    var audioRecoreder:AVAudioRecorder!
+    
+    var nuberOfRecords = 0
+    
+    @IBAction func record(_ sender: Any) {
+        
+        //check if audio recorder is active
+        if  audioRecoreder == nil  {
+            nuberOfRecords += 1
+            let filname = getDirectory().appendingPathComponent("\(nuberOfRecords).m4a")
+            let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
+            
+            // start audio recording
+            do {
+                audioRecoreder = try AVAudioRecorder(url: filname,settings: settings)
+                audioRecoreder.delegate = self
+                audioRecoreder.record()
+                
+                recordBtn.setTitle("Stop recording", for: .normal)
+            } catch  {
+                displayAlert(title: "Error!", message: "Recording Failed!!")
+            }
+            
+        }
+        else{
+            audioRecoreder.stop()
+            audioRecoreder = nil
+            
+            recordBtn.setTitle("Make a VoiceNote", for: .normal)
+        }
+    }
     
     var latitudeString:String = ""
           var longitudeString:String = ""
@@ -38,6 +71,13 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     override func viewDidLoad() {
     super.viewDidLoad()
     
+        recordingSession = AVAudioSession.sharedInstance()
+        
+        AVAudioSession.sharedInstance().requestRecordPermission{(hasPermission) in
+            if hasPermission{
+                print("Accepted")
+            }
+        }
         navigationController?.navigationBar.barTintColor = UIColor.green
 
     
@@ -95,14 +135,18 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
         }
     
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-          if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
-              let imageData = image.pngData() as NSData?
+   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
 
-         self.notesImageView.image = UIImage(data: imageData! as Data)
-                 self.dismiss(animated: true, completion: nil)
-          }
-      }
+        guard let image = info[.editedImage] as? UIImage else {
+            print("No image found")
+            return
+        }
+
+        // print out the image size as a test
+        print(image.size)
+    }
+    
       func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
       picker.dismiss(animated: true, completion: nil)
       }
@@ -185,9 +229,6 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
                          //self.dismiss(animated: true, completion: nil)
                      }
         
-        
-        
-    }
     
     
 
@@ -202,4 +243,20 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     }
     */
 
+}
+
+    //get path
+    func getDirectory() -> URL{
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentDirectory = paths[0]
+        return documentDirectory
+    }
+    
+    //display alert
+    func displayAlert(title:String,message:String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
+        present(alert,animated: true,completion: nil)
+    }
+    
 }
