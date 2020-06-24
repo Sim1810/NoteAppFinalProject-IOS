@@ -11,7 +11,8 @@ import  CoreData
 import MapKit
 import AVFoundation
 
-class EditNotesViewController: UIViewController,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate{
+class EditNotesViewController: UIViewController,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate,UITableViewDelegate,UITableViewDataSource{
+    
     
     @IBOutlet weak var txttitle: UITextField!
     
@@ -20,17 +21,19 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     @IBOutlet weak var notesImageView: UIImageView!
     
     @IBOutlet weak var recordBtn: UIButton!
+    @IBOutlet weak var myTableView: UITableView!
     var recordingSession:AVAudioSession!
     var audioRecoreder:AVAudioRecorder!
+    var audioPlayer:AVAudioPlayer!
     
-    var nuberOfRecords = 0
+    var numberOfRecords:Int = 0
     
     @IBAction func record(_ sender: Any) {
         
         //check if audio recorder is active
         if  audioRecoreder == nil  {
-            nuberOfRecords += 1
-            let filname = getDirectory().appendingPathComponent("\(nuberOfRecords).m4a")
+            numberOfRecords += 1
+            let filname = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
             // start audio recording
@@ -46,9 +49,13 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
             
         }
         else{
+            
+            //stop recording
             audioRecoreder.stop()
             audioRecoreder = nil
             
+            UserDefaults.standard.set(numberOfRecords,forKey: "myNumber")
+            myTableView.reloadData()
             recordBtn.setTitle("Make a VoiceNote", for: .normal)
         }
     }
@@ -72,6 +79,10 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     super.viewDidLoad()
     
         recordingSession = AVAudioSession.sharedInstance()
+        
+        if let number:Int = UserDefaults.standard.object(forKey: "myNumber ") as? Int {
+            numberOfRecords = number
+        }
         
         AVAudioSession.sharedInstance().requestRecordPermission{(hasPermission) in
             if hasPermission{
@@ -258,5 +269,26 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
         alert.addAction(UIAlertAction(title: "Dismiss", style: .default, handler: nil))
         present(alert,animated: true,completion: nil)
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return numberOfRecords
+    }
     
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = String(indexPath.row + 1)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
+     
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: path)
+            audioPlayer.play()
+        } catch
+        {
+            
+        }
+    }
 }
