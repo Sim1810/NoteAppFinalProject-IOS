@@ -212,6 +212,20 @@
                                     <action selector="selectimage:" destination="Nqh-aF-8NJ" eventType="touchUpInside" id="Sjc-Jv-cro"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Latitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFd-qq-XAv">
+                                <rect key="frame" x="40" y="511" width="83" height="26"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Longitude" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Y-ww-oyY">
+                                <rect key="frame" x="40" y="545" width="77" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="iqD-7t-px5"/>
@@ -224,6 +238,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="lblLat" destination="PFd-qq-XAv" id="pHk-PZ-HiR"/>
+                        <outlet property="lblLong" destination="awO-eT-e66" id="J1J-58-pbV"/>
                         <outlet property="myTableView" destination="Laf-5p-owb" id="R3Y-WX-OwY"/>
                         <outlet property="notesImageView" destination="mvf-8I-KrM" id="XZS-m9-qxN"/>
                         <outlet property="recordBtn" destination="hs2-66-fPr" id="kfU-Oh-Syx"/>

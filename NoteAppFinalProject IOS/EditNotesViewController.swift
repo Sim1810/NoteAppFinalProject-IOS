@@ -13,7 +13,7 @@ import AVFoundation
 
 class EditNotesViewController: UIViewController,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate,UITableViewDelegate,UITableViewDataSource{
     
-    
+     var locationManager = CLLocationManager()
     @IBOutlet weak var txttitle: UITextField!
     
     @IBOutlet weak var textView: UITextView!
@@ -22,6 +22,9 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     
     @IBOutlet weak var recordBtn: UIButton!
     @IBOutlet weak var myTableView: UITableView!
+    @IBOutlet weak var lblLat: UILabel!
+    
+    @IBOutlet var lblLong: UILabel!
     var recordingSession:AVAudioSession!
     var audioRecoreder:AVAudioRecorder!
     var audioPlayer:AVAudioPlayer!
@@ -77,7 +80,23 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     
     override func viewDidLoad() {
     super.viewDidLoad()
-    
+        
+        
+        
+        // we give the delegate of locationManager to this class
+               locationManager.delegate = self
+               
+               // accuracy of the location
+               locationManager.desiredAccuracy = kCLLocationAccuracyBest
+               
+               // request the user for the location access
+               locationManager.requestWhenInUseAuthorization()
+               
+               // start updating the location of the user
+               locationManager.startUpdatingLocation()
+        
+        
+    //creating recording session
         recordingSession = AVAudioSession.sharedInstance()
         
         if let number:Int = UserDefaults.standard.object(forKey: "myNumber ") as? Int {
