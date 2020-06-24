@@ -38,8 +38,10 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     override func viewDidLoad() {
     super.viewDidLoad()
     
+        navigationController?.navigationBar.barTintColor = UIColor.green
+
     
-    // playlbl.isEnabled = old
+    
           guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
           context = appDelegate.persistentContainer.viewContext
           
