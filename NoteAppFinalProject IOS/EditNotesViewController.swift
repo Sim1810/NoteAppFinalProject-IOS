@@ -47,6 +47,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
                 audioRecoreder.record()
                 
                 recordBtn.setTitle("Stop recording", for: .normal)
+                
             } catch  {
                 displayAlert(title: "Error!", message: "Recording Failed!!")
             }
@@ -60,6 +61,19 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
             
             UserDefaults.standard.set(numberOfRecords,forKey: "myNumber")
             myTableView.reloadData()
+            do{
+               try context.save()
+                 displayAlert(title: "Recording \(numberOfRecords)", message: "Recording saved!")
+            }
+            catch {
+                print("Error saving recording!")
+                
+                // show an alert box with an error message
+                let alertBox = UIAlertController(title: "Error", message: "Error while saving.", preferredStyle: .alert)
+                alertBox.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                self.present(alertBox, animated: true, completion: nil)
+            }
+           
             recordBtn.setTitle("Make a VoiceNote", for: .normal)
         }
     }
@@ -109,7 +123,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
                 print("You have permission to take picture!")
             }
         }
-        navigationController?.navigationBar.barTintColor = UIColor.green
+        //navigationController?.navigationBar.barTintColor = UIColor.orange
 
     
     
