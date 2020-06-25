@@ -14,6 +14,7 @@ import AVFoundation
 class EditNotesViewController: UIViewController,  UINavigationControllerDelegate, UIImagePickerControllerDelegate, CLLocationManagerDelegate,AVAudioRecorderDelegate,AVAudioPlayerDelegate,UITableViewDelegate,UITableViewDataSource{
     
      var locationManager = CLLocationManager()
+    
     @IBOutlet weak var txttitle: UITextField!
     
     @IBOutlet weak var textView: UITextView!
@@ -36,7 +37,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
         //check if audio recorder is active
         if  audioRecoreder == nil  {
             numberOfRecords += 1
-            let filname = getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
+            let filname = getDirectory().appendingPathComponent("Recording \(numberOfRecords).m4a")
             let settings = [AVFormatIDKey: Int(kAudioFormatMPEG4AAC),AVSampleRateKey: 12000,AVNumberOfChannelsKey: 1, AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue]
             
             // start audio recording
@@ -290,9 +291,9 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = String(indexPath.row + 1)
-        return cell
+        let cell1 = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
+        cell1.textLabel?.text = String(indexPath.row + 1)
+        return cell1
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
