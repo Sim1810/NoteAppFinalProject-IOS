@@ -22,6 +22,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     @IBOutlet weak var notesImageView: UIImageView!
     
     @IBOutlet weak var recordBtn: UIButton!
+    @IBOutlet weak var playBtn: UIButton!
     @IBOutlet weak var myTableView: UITableView!
     @IBOutlet weak var lblLat: UILabel!
     
@@ -95,20 +96,6 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     
     override func viewDidLoad() {
     super.viewDidLoad()
-        
-        
-        
-        // we give the delegate of locationManager to this class
-               locationManager.delegate = self
-               
-               // accuracy of the location
-               locationManager.desiredAccuracy = kCLLocationAccuracyBest
-               
-               // request the user for the location access
-               locationManager.requestWhenInUseAuthorization()
-               
-               // start updating the location of the user
-               locationManager.startUpdatingLocation()
         
         
     //creating recording session
@@ -199,7 +186,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
          
       
          
-        /* func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
              let userLocation:CLLocation = locations[0] as CLLocation
             
              note.lat = userLocation.coordinate.latitude
@@ -211,7 +198,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
          func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
          {
              print("Error \(error)")
-         }*/
+         }
     
     
     
