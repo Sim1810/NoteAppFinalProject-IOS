@@ -43,9 +43,8 @@ class CategoryTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     
-    @IBAction func SortNoteBtn(_ sender: UIBarButtonItem) {
-      
     
+    @IBAction func sortButton(_ sender: UIBarButtonItem) {
         let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
         
         
@@ -69,9 +68,8 @@ class CategoryTableViewController: UITableViewController {
         
         // 4. show the alertbox
         self.present(alertBox, animated: true, completion: nil)
-        
-        
     }
+  
   
     
     
@@ -142,7 +140,7 @@ class CategoryTableViewController: UITableViewController {
           //fetchRequest.predicate = NSPredicate(format: "notebook.name = %@", notebook.name)
           // setup array of notebooks
           let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
-          fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+          fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
           
           // Uncomment if you want to sort the list by name
           // let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
@@ -161,7 +159,7 @@ class CategoryTableViewController: UITableViewController {
       func getAllNotebooksByTitleDesc() {
           // setup array of notebooks
           let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
-          fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
+          fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
           
           // Uncomment if you want to sort the list by name
           // let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)

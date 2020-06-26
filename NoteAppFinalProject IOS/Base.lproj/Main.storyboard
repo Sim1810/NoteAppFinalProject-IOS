@@ -42,25 +42,15 @@
                                     <action selector="AddNotesBtn:" destination="GNI-GG-FfX" id="TNj-6V-ObR"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Sort" style="plain" id="Yj7-TQ-gcn">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Ziq-MM-KeP">
-                                    <rect key="frame" x="261.5" y="37" width="92" height="38"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
-                                    <state key="normal" title="Sort"/>
-                                    <connections>
-                                        <action selector="SortCategoryBtn:" destination="zsz-nQ-7w7" eventType="touchUpInside" id="CQV-Xe-0IK"/>
-                                    </connections>
-                                </button>
+                            <barButtonItem title="Sort" id="L0p-R6-AK5">
                                 <connections>
-                                    <action selector="SortNoteBtn:" destination="GNI-GG-FfX" id="RJk-TZ-xOJ"/>
+                                    <action selector="sortButton:" destination="GNI-GG-FfX" id="jV5-22-eJt"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sB-yf-iGU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="zsz-nQ-7w7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="70" y="141"/>
         </scene>
