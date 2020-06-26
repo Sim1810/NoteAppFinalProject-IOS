@@ -37,7 +37,32 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-   
+    @IBAction func sortNotesBtn(_ sender: UIBarButtonItem) {
+        let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
+        
+        
+        // 2. Add Save and Cancel buttons
+        alertBox.addAction(UIAlertAction(title: "Date Created", style: .default, handler: { alert -> Void in
+            self.getAllNotebooks()
+            self.tableView.reloadData()
+        }))
+        alertBox.addAction(UIAlertAction(title: "Title(Asc)", style: .default, handler: { alert -> Void in
+            self.getAllNotebooksByTitle()
+            self.tableView.reloadData()
+        }))
+        alertBox.addAction(UIAlertAction(title: "Title(Desc)", style: .default, handler: { alert -> Void in
+            self.getAllNotebooksByTitleDesc()
+            self.tableView.reloadData()
+        }))
+        
+        alertBox.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        
+        
+        
+        // 4. show the alertbox
+        self.present(alertBox, animated: true, completion: nil)
+    }
+    
     @IBAction func addNotesBtn(_ sender: UIBarButtonItem) {
         // 1. Create a popup
           let alertBox = UIAlertController(title: "Add a Category", message: "Enter the name of note ", preferredStyle: .alert)
@@ -112,25 +137,49 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
            
     
          }
+    func getAllNotebooksByTitle() {
+             //fetchRequest.predicate = NSPredicate(format: "notebook.name = %@", notebook.name)
+             // setup array of notebooks
+             let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
+             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+             
+             // Uncomment if you want to sort the list by name
+             // let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+             // notebookFetchRequest.sortDescriptors = [sortDescriptor]
+             
+             
+             do {
+                 
+                 self.notebooks = try context.fetch(fetchRequest)
+             }
+             catch {
+                 print("Error fetching notebooks from database")
+             }
+         }
+       
+         func getAllNotebooksByTitleDesc() {
+             // setup array of notebooks
+             let fetchRequest:NSFetchRequest<Notebook> = Notebook.fetchRequest()
+             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
+             
+             // Uncomment if you want to sort the list by name
+             // let sortDescriptor = NSSortDescriptor(key: "name", ascending: false)
+             // notebookFetchRequest.sortDescriptors = [sortDescriptor]
+             
+             
+             do {
+                 
+                 self.notebooks = try context.fetch(fetchRequest)
+             }
+             catch {
+                 print("Error fetching notebooks from database")
+             }
+         }
     
     
    
 
-    @IBAction func NotesbtnSort(_ sender: UIBarButtonItem) {
-          let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
-       
-                       alertBox.addAction(UIAlertAction(title: "Date(Recent first)", style: .default, handler: { alert -> Void in
-                           self.getNotesByDateRecent()
-                           self.tableView.reloadData()
-                       }))
-                       alertBox.addAction(UIAlertAction(title: "Date(Oldest first)", style: .default, handler: { alert -> Void in
-                           self.getNotesByDateOldest()
-                           self.tableView.reloadData()
-                       }))
-                       alertBox.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-                       // 4. show the alertbox
-                       self.present(alertBox, animated: true, completion: nil)
-    }
+    
     
    func updateSearchResults(for searchController: UISearchController) {
               searchController.searchBar.autocapitalizationType = .none
@@ -150,7 +199,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
                let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
                fetchRequest.predicate = NSPredicate(format: "notebook = %@", notebook)
                //fetchRequest.predicate = NSPredicate(format: "notebook.name = %@", notebook.name)
-              // fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+              // fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
                
                do {
                    self.notes = try context.fetch(fetchRequest)
@@ -166,7 +215,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
                let fetchRequest:NSFetchRequest<Note> = Note.fetchRequest()
                fetchRequest.predicate = NSPredicate(format: "notebook = %@", notebook)
                //fetchRequest.predicate = NSPredicate(format: "notebook.name = %@", notebook.name)
-               //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: false)]
+               //fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: false)]
                
                do {
                    self.notes = try context.fetch(fetchRequest)

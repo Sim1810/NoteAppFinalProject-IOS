@@ -105,14 +105,9 @@
                                     <segue destination="Nqh-aF-8NJ" kind="show" identifier="addNoteSegue" id="7Qt-EJ-WjA"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Sort" style="plain" id="4IV-cF-gYf">
-                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="KaN-Pi-YdH" userLabel="Sort">
-                                    <rect key="frame" x="261.5" y="7" width="92" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal" title="Sort"/>
-                                </button>
+                            <barButtonItem title="Sort" id="nFm-Jb-9C9">
                                 <connections>
-                                    <action selector="NotesbtnSort:" destination="5V5-7H-W7j" id="mGB-Lw-Vee"/>
+                                    <action selector="sortNotesBtn:" destination="5V5-7H-W7j" id="UIq-YY-phP"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -120,7 +115,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YVC-e4-UhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="778" y="141"/>
+            <point key="canvasLocation" x="467" y="153"/>
         </scene>
         <!--Edit Notes-->
         <scene sceneID="Y4W-ml-K6k">
