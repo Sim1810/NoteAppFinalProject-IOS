@@ -131,6 +131,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
                        // 4. show the alertbox
                        self.present(alertBox, animated: true, completion: nil)
     }
+    
    func updateSearchResults(for searchController: UISearchController) {
               searchController.searchBar.autocapitalizationType = .none
               filteredArray = array.filter({ (array: String) -> Bool in

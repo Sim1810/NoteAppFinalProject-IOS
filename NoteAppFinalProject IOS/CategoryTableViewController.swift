@@ -44,7 +44,7 @@ class CategoryTableViewController: UITableViewController {
     
     
     @IBAction func SortNoteBtn(_ sender: UIBarButtonItem) {
-    
+      
     
         let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
         
@@ -72,7 +72,7 @@ class CategoryTableViewController: UITableViewController {
         
         
     }
-    
+  
     
     
     @IBAction func AddNotesBtn(_ sender: UIBarButtonItem) {

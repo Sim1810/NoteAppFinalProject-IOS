@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C834F6E24A5577A00A69E7C /* NotesLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C834F6D24A5577A00A69E7C /* NotesLocationViewController.swift */; };
 		CE394DD6249AE21C000015A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE394DD5249AE21C000015A5 /* AppDelegate.swift */; };
 		CE394DD8249AE21C000015A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE394DD7249AE21C000015A5 /* SceneDelegate.swift */; };
 		CE394DDD249AE21C000015A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE394DDB249AE21C000015A5 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C834F6D24A5577A00A69E7C /* NotesLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesLocationViewController.swift; sourceTree = "<group>"; };
 		CE394DD2249AE21C000015A5 /* NoteAppFinalProject IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NoteAppFinalProject IOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE394DD5249AE21C000015A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE394DD7249AE21C000015A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				CE394DE0249AE222000015A5 /* LaunchScreen.storyboard */,
 				CEAFF5B2249C291F000544F3 /* Project_IOS_datamodel.xcdatamodeld */,
 				CE394DE3249AE222000015A5 /* Info.plist */,
+				0C834F6D24A5577A00A69E7C /* NotesLocationViewController.swift */,
 			);
 			path = "NoteAppFinalProject IOS";
 			sourceTree = "<group>";
@@ -153,6 +156,7 @@
 				CEAFF5B9249C382C000544F3 /* EditNotesViewController.swift in Sources */,
 				CEAFF5AB249C234C000544F3 /* NotesTableViewController.swift in Sources */,
 				CEAFF5B4249C291F000544F3 /* Project_IOS_datamodel.xcdatamodeld in Sources */,
+				0C834F6E24A5577A00A69E7C /* NotesLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
