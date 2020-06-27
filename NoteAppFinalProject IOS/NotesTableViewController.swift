@@ -38,29 +38,29 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     @IBAction func sortNotesBtn(_ sender: UIBarButtonItem) {
-        let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
-        
-        
-        // 2. Add Save and Cancel buttons
-        alertBox.addAction(UIAlertAction(title: "Date Created", style: .default, handler: { alert -> Void in
-            self.getAllNotebooks()
-            self.tableView.reloadData()
-        }))
-        alertBox.addAction(UIAlertAction(title: "Title(Asc)", style: .default, handler: { alert -> Void in
-            self.getAllNotebooksByTitle()
-            self.tableView.reloadData()
-        }))
-        alertBox.addAction(UIAlertAction(title: "Title(Desc)", style: .default, handler: { alert -> Void in
-            self.getAllNotebooksByTitleDesc()
-            self.tableView.reloadData()
-        }))
-        
-        alertBox.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
-        
-        
-        
-        // 4. show the alertbox
-        self.present(alertBox, animated: true, completion: nil)
+        let alertBox = UIAlertController(title: "Sort", message: "Choose options:", preferredStyle: .alert)
+               
+               
+               // 2. Add Save and Cancel buttons
+              alertBox.addAction(UIAlertAction(title: "by date", style: .default, handler: { alert -> Void in
+                   self.getAllNotebooks()
+                   self.tableView.reloadData()
+               }))
+               alertBox.addAction(UIAlertAction(title: "Ascending Order", style: .default, handler: { alert -> Void in
+                   self.getAllNotebooksByTitle()
+                   self.tableView.reloadData()
+               }))
+               alertBox.addAction(UIAlertAction(title: "Descending order", style: .default, handler: { alert -> Void in
+                   self.getAllNotebooksByTitleDesc()
+                   self.tableView.reloadData()
+               }))
+               
+               alertBox.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+               
+               
+               
+               // 4. show the alertbox
+               self.present(alertBox, animated: true, completion: nil)
     }
     
     @IBAction func addNotesBtn(_ sender: UIBarButtonItem) {

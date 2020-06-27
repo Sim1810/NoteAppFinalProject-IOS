@@ -45,19 +45,19 @@ class CategoryTableViewController: UITableViewController {
     
     
     @IBAction func sortButton(_ sender: UIBarButtonItem) {
-        let alertBox = UIAlertController(title: "Sort", message: "Choose Criteria", preferredStyle: .alert)
+        let alertBox = UIAlertController(title: "Sort", message: "Choose options:", preferredStyle: .alert)
         
         
         // 2. Add Save and Cancel buttons
-        alertBox.addAction(UIAlertAction(title: "Date Created", style: .default, handler: { alert -> Void in
+       alertBox.addAction(UIAlertAction(title: "by date", style: .default, handler: { alert -> Void in
             self.getAllNotebooks()
             self.tableView.reloadData()
         }))
-        alertBox.addAction(UIAlertAction(title: "Title(Asc)", style: .default, handler: { alert -> Void in
+        alertBox.addAction(UIAlertAction(title: "Ascending Order", style: .default, handler: { alert -> Void in
             self.getAllNotebooksByTitle()
             self.tableView.reloadData()
         }))
-        alertBox.addAction(UIAlertAction(title: "Title(Desc)", style: .default, handler: { alert -> Void in
+        alertBox.addAction(UIAlertAction(title: "Descending order", style: .default, handler: { alert -> Void in
             self.getAllNotebooksByTitleDesc()
             self.tableView.reloadData()
         }))
@@ -75,7 +75,7 @@ class CategoryTableViewController: UITableViewController {
     
     @IBAction func AddNotesBtn(_ sender: UIBarButtonItem) {
     // 1. Create a popup
-    let alertBox = UIAlertController(title: "Add a Category", message: "Enter the name of new category", preferredStyle: .alert)
+    let alertBox = UIAlertController(title: "Add a Category", message: "Enter a new category", preferredStyle: .alert)
     
     
     // 2. Add Save and Cancel buttons
