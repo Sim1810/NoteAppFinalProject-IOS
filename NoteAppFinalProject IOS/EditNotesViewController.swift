@@ -96,7 +96,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     
     override func viewDidLoad() {
     super.viewDidLoad()
-        
+         navigationController?.navigationBar.barTintColor = UIColor.systemOrange
         
     //creating recording session
         recordingSession = AVAudioSession.sharedInstance()

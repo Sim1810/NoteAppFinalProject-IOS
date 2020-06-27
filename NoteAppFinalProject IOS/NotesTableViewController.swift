@@ -27,7 +27,7 @@ class NotesTableViewController: UITableViewController, UISearchResultsUpdating {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barTintColor = UIColor.green
+        navigationController?.navigationBar.barTintColor = UIColor.systemOrange
 
 
         // Uncomment the following line to preserve selection between presentations

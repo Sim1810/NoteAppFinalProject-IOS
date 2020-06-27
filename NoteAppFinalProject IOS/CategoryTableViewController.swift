@@ -28,7 +28,7 @@ class CategoryTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barTintColor = UIColor.green
+        navigationController?.navigationBar.barTintColor = UIColor.systemOrange
         
         // initialize CoreData variables
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
