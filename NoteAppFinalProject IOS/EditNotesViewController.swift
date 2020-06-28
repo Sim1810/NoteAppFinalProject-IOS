@@ -6,8 +6,10 @@
 //  Copyright © 2020 Simranjeet kaur. All rights reserved.
 //
 
+
+
 import UIKit
-import  CoreData
+import CoreData
 import MapKit
 import AVFoundation
 
@@ -68,13 +70,12 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
             }
             catch {
                 print("Error saving recording!")
-                
+    
                 // show an alert box with an error message
                 let alertBox = UIAlertController(title: "Error", message: "Error while saving.", preferredStyle: .alert)
                 alertBox.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 self.present(alertBox, animated: true, completion: nil)
             }
-           
             recordBtn.setTitle("Make a VoiceNote", for: .normal)
         }
     }
@@ -110,7 +111,7 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
                 print("You have permission to take picture!")
             }
         }
-        //navigationController?.navigationBar.barTintColor = UIColor.orange
+        navigationController?.navigationBar.barTintColor = UIColor.systemOrange
 
     
     
@@ -299,14 +300,14 @@ class EditNotesViewController: UIViewController,  UINavigationControllerDelegate
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        let path = getDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
+        let path = getDirectory().appendingPathComponent("Recording \(indexPath.row + 1).m4a")
      
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: path)
             audioPlayer.play()
         } catch
         {
-            
+            print("Error!")
         }
     }
 }
